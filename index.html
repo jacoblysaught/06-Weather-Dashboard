@@ -5,35 +5,85 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./assets/css/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova&family=Montserrat+Alternates:ital,wght@1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>Weather Dashboard</title>
 </head>
-
 <body>
-    <section class="card">
+    <section id="main-card" class="card">
         <div class="search">
             <input type="text" class="searchbar" placeholder="Search by City...">
-            <button> <img src="./assets/img/search.svg" alt="magnifying glass"></button>
+            <button type ="submit" class="searchBtn"><img src="./assets/img/search.svg" alt="magnifying glass"></button>
         </div>
         <div class="weather">
             <h2 class="city">Weather in New York</h2>
-            <h1 class="temp">51</h1>
-            <img src="" alt="" class="weather-icon" />
-            <div class="description">Sunny</div>
-            <div class="wind"> Wind Speed: 12.2 MPH</div>
-            <div class="humidity">Humidity: 46%</div>
-            <div class="uv-index">UV Index:</div><div id="uv-number">5.64</div>
+            <p id="currentDay"></p>
+            <h1 class="temp">26 ° C</h1>
+            <div class="flex">
+                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" class="weather-icon" />
+                <div class="description">Sunny</div>
+            </div>
+        <div class="info">
+            <div class="wind"> Wind speed: 2.07km/h</div>
+            <div class="humidity">Humidity: 33%</div>
+            <div class="uv-index">UV Index:</div><div id="uv-number">0.64</div>
+        </div>
+        </div>
+        <div class="recent-search">
+            <h2 class="recent"> Recent Searches </h2>
         </div>
     </section>
+    <div class="card-deck">
+        <div class="forecast">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <p class="card-text">Temp:</p>
+            <p class="card-text">Wind:</p>
+            <p class="card-text">Humidity:</p>
+          </div>
+        </div>
+        <div class="forecast">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <p class="card-text">Temp:</p>
+            <p class="card-text">Wind:</p>
+            <p class="card-text">Humidity:</p>
+          </div>
+        </div>
+        <div class="forecast">
+          <div class="card-body">
+            <h5 class="card-title">Date</h5>
+            <p class="card-text">Temp:</p>
+            <p class="card-text">Wind:</p>
+            <p class="card-text">Humidity:</p>
+          </div>
+        </div>
+        <div class="forecast">
+            <div class="card-body">
+              <h5 class="card-title">Date</h5>
+              <p class="card-text">Temp:</p>
+              <p class="card-text">Wind:</p>
+              <p class="card-text">Humidity:</p>
+            </div>
+          </div>
+          <div class="forecast">
+            <div class="card-body">
+              <h5 class="card-title">Date</h5>
+              <p class="card-text">Temp:</p>
+              <p class="card-text">Wind:</p>
+              <p class="card-text">Humidity:</p>
+            </div>
+          </div>
+      </div>
     
 
 
 
 
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
