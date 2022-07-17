@@ -10,7 +10,7 @@ body {
     margin: 10px;
 }
 
-.card {
+.main-weather {
     padding: 1.6em;
     width: 100%;
     max-width: 600px;
@@ -41,19 +41,19 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
-#main-card {
+#main-search {
     padding: 1em;
     height: 95vh;
 
 }
 
-.card-deck {
+.forecast-deck {
     display: flex;
     margin-left: 10px;
     height: 400px;
 }
 
-.card-title {
+.forecast-date {
     margin-top: -50px;
     margin-bottom: 125px;
     margin-left: 30px;
@@ -79,12 +79,12 @@ body {
     color: white;
 }
 
-.card-body {
+.forecast-card {
     padding: 4.5em;
     margin-left: -30px;
 }
 
-.search {
+.searchbox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,10 +133,11 @@ button:hover {
 .weather {
     font-weight: normal;
     padding: 10px;
-    margin-left: 110px;
+    margin-left: 100px;
 }
 
 .city {
+    margin-left: -35px;
     margin-top: 30px;
     margin-bottom: 50px;
 }
@@ -174,7 +175,7 @@ button:hover {
     margin-bottom: 5px;
 }
 
-.info {
+.main-info {
     display: flex;
     flex-direction: column;
     font-size: 20px;
@@ -211,10 +212,39 @@ button:hover {
     text-align: center;
 }
 
+.recent {
+    margin-right: -20px;
+}
+
 .recent-search {
     display: flex;
     justify-content: center;
-    margin-right: 50px;
+    margin-right: -50px;
     padding-top: 60px;
 }
 
+.list-group {
+    list-style: none;
+    padding: 50px;
+}
+
+.list-group-item {
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    background:none;
+    border: none;
+}
+
+.list-group li {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    padding: 12px;
+    margin-left: -325px;
+    background-color: rgba(17, 25, 40, 0.50);
+}
+
+.list-group li:hover {
+    color: wheat;
+}

@@ -1,3 +1,17 @@
+const city = $('.searchbar').val();
+const searchbar = document.querySelector(".searchbar");
+const searchValue = searchbar.value
+
+// For loop for persisting the data onto HTML page
+for (var i = 0; i < localStorage.length; i++) {
+
+    const city = localStorage.getItem(i);
+    // console.log(localStorage.getItem("City"));
+    var cityName = $(".list-group").addClass("list-group-item");
+
+    cityName.append("<li>" + city + "</li>");
+}
+// calls and displays data onto main card
 let weather = {
     "apiKey": "2544580b8521d4a1a01e303add205e9f",
     fetchWeather: function(city) {
@@ -19,18 +33,31 @@ let weather = {
         document.querySelector(".temp").innerText = temp + " °C";
         document.querySelector(".wind").innerText = "Wind speed: " + speed + "km/h";
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
+
     },
     search: function () {
         this.fetchWeather(document.querySelector(".searchbar").value)
     }
 };
 
-const searchbar = document.querySelector(".searchbar");
+let uvURL = {
+    "apiKey": "2544580b8521d4a1a01e303add205e9f",
+    fetchUVindex: function(city) {
+        fetch(
+            "https://api.openweathermap.org/data/2.5/onecall?q=" + city + "&units=metric&appid=" +_this.apiKey
+        )
+        .then((response) => response.json())
+        .then((data) => this.displayWeather(data));
+    },
+    displayUVindex: function(data) {
+        console.log(data);
+    }
+}
 
+//listens for button to be clicked while then calls search function which changes the city and adds to localstorage
 document.querySelector(".searchBtn").addEventListener("click",  function () {
     const searchText = searchbar.value;
-    console.log(searchText);
-    // localStorage.setItem(searchText, );
+    localStorage.setItem(localStorage.length, searchText);
     weather.search();
 })
 
@@ -38,8 +65,7 @@ document.querySelector(".searchBtn").addEventListener("click",  function () {
 document.querySelector(".searchbar").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         const searchText = searchbar.value;
-        console.log(searchText);
-        // localStorage.setItem(searchText, );
+        localStorage.setItem(localStorage.length, searchText);
         weather.search();
     }
 })
