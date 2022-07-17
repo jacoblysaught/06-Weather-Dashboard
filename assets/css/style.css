@@ -7,6 +7,7 @@ body {
     font-family: 'Ibarra Real Nova', serif;
     font-family: 'Montserrat Alternates', sans-serif;
     font-size: 110%;
+    margin: 10px;
 }
 
 .card {
@@ -27,15 +28,15 @@ body {
     display: flex;
     justify-content: left;
     padding: 1em;
-    height: 35vh;
+    height: 40vh;
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     margin-top: 0px;
     color: white;
     font-weight: bold;
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(17, 25, 40, 0.25);
+    background-color: rgba(17, 25, 40, 0.5);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
@@ -48,7 +49,7 @@ body {
 
 .card-deck {
     display: flex;
-    margin-left: 45px;
+    margin-left: 10px;
     height: 400px;
 }
 
@@ -56,8 +57,26 @@ body {
     margin-top: -50px;
     margin-bottom: 125px;
     margin-left: 30px;
-    font-size: large;
+    font-size: 21px;
+    color: white;
     
+}
+
+.forecast-icons {
+    display: flex;
+    justify-items: flex-start;
+    height: 8vh;
+    margin-top: -60px;
+    margin-bottom: 50px;
+    margin-left: 28px;
+}
+
+.forecast-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: -25px;
+    color: white;
 }
 
 .card-body {
@@ -95,8 +114,8 @@ button {
     padding: 8px;
     margin: .6em;
     border-radius: 60%;
-    border: none;
-    background-color: rgba(17, 25, 40, 0.2);
+    border: wheat;
+    background-color: rgba(17, 25, 40, 0.1);
 }
 
 button img {
@@ -104,28 +123,34 @@ button img {
 }
 
 button img:hover {
-    transform: scale(1.25);
+    transform: scale(1.3);
 }
 
 button:hover {
-    background-color: rgba(17, 25, 40, .4);
+    background-color: rgb(228, 209, 209);
 }
 
 .weather {
     font-weight: normal;
     padding: 10px;
-    margin-left: 125px;
+    margin-left: 110px;
+}
+
+.city {
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 #currentDay {
     color: blanchedalmond;
-    font-size: large;
+    font-size: 22px;
     margin-top: 40px;
     margin-bottom: 40px;
+    margin-left: 15px;
 }
 
 .temp {
-    font-size: 32px;
+    font-size: 36px;
     display: flex;
     margin-left: 15px;
     margin-bottom: 10px;
@@ -134,17 +159,25 @@ button:hover {
 .flex {
     display: flex;
     align-items: center;
-    font-size: 22px;
+    font-size: 18px;
     color: blanchedalmond;
     text-transform: capitalize;
     margin-bottom: 20px;
 
 }
 
+.wind {
+    margin-bottom: 5px;
+}
+
+.humidity {
+    margin-bottom: 5px;
+}
+
 .info {
     display: flex;
     flex-direction: column;
-    font-size: 18px;
+    font-size: 20px;
     padding: 5px;
 }
 
@@ -156,10 +189,32 @@ button:hover {
 
 }
 
+.favorable {
+    background-color: green;
+    border-radius: 8px;
+    width: 15%;
+    text-align: center;
+}
+
+.moderate {
+    color: blue;
+    background-color: rgb(225, 228, 35);
+    border-radius: 8px;
+    width: 15%;
+    text-align: center;
+}
+
+.severe {
+    background-color: rgb(255, 49, 49);
+    border-radius: 8px;
+    width: 15%;
+    text-align: center;
+}
+
 .recent-search {
     display: flex;
     justify-content: center;
-    margin-right: 45px;
+    margin-right: 50px;
     padding-top: 60px;
 }
 
