@@ -213,7 +213,7 @@ button:hover {
 }
 
 .recent {
-    margin-right: -20px;
+    margin-right: -15px;
 }
 
 .recent-search {
@@ -221,6 +221,12 @@ button:hover {
     justify-content: center;
     margin-right: -50px;
     padding-top: 60px;
+}
+
+#clear-button {
+    position: absolute;
+    bottom: 5px;
+    right: 145px;
 }
 
 .list-group {
@@ -234,6 +240,7 @@ button:hover {
     flex-direction: column;
     background:none;
     border: none;
+    color: aqua;
 }
 
 .list-group li {

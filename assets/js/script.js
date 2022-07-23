@@ -1,22 +1,23 @@
+const APIkey = "2544580b8521d4a1a01e303add205e9f";
+
 const city = $('.searchbar').val();
 const searchbar = document.querySelector(".searchbar");
-const searchValue = searchbar.value
+const searchValue = searchbar.value;
+const clearBtn = document.getElementById('clear-button')
+const pastSearchedCities = $('.list-group');
 
-// For loop for persisting the data onto HTML page
-for (var i = 0; i < localStorage.length; i++) {
+// For loop for persisting the data onto HTML page and sets limit of items displayed to 6
+for (var i = 0; i < 5; i++) {
 
     const city = localStorage.getItem(i);
-    // console.log(localStorage.getItem("City"));
     var cityName = $(".list-group").addClass("list-group-item");
-
     cityName.append("<li>" + city + "</li>");
 }
 // calls and displays data onto main card
 let weather = {
-    "apiKey": "2544580b8521d4a1a01e303add205e9f",
     fetchWeather: function(city) {
         fetch(
-            "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + this.apiKey
+            "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + APIkey
         )
         .then((response) => response.json())
         .then((data) => this.displayWeather(data));
@@ -40,18 +41,15 @@ let weather = {
     }
 };
 
-let uvURL = {
-    "apiKey": "2544580b8521d4a1a01e303add205e9f",
-    fetchUVindex: function(city) {
-        fetch(
-            "https://api.openweathermap.org/data/2.5/onecall?q=" + city + "&units=metric&appid=" +_this.apiKey
-        )
-        .then((response) => response.json())
-        .then((data) => this.displayWeather(data));
-    },
-    displayUVindex: function(data) {
-        console.log(data);
-    }
+function getForecast(data) {
+    const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.lat}&lon=${data.lon}&exclude=minutely,hourly,alerts&units=metric&appid=${APIkey}`
+    fetch(requestUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data){
+            
+        })
 }
 
 //listens for button to be clicked while then calls search function which changes the city and adds to localstorage
@@ -81,3 +79,10 @@ document.querySelector("#day-2").innerText = today.add(1, "days").format("L");
 document.querySelector("#day-3").innerText = today.add(1, "days").format("L");
 document.querySelector("#day-4").innerText = today.add(1, "days").format("L");
 document.querySelector("#day-5").innerText = today.add(1, "days").format("L");
+
+// button to clear recent history from page and localstorage
+clearBtn.addEventListener('click', function handleClick(event) {
+    pastSearchedCities.remove();
+    localStorage.clear();
+});
+
