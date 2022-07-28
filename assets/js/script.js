@@ -5,6 +5,9 @@ const searchbar = document.querySelector(".searchbar");
 const searchValue = searchbar.value;
 const clearBtn = document.getElementById('clear-button')
 const pastSearchedCities = $('.list-group');
+const localCityArray = [];
+
+let lastSearch = JSON.parse(localStorage.getItem("searches"));
 
 // For loop for persisting the data onto HTML page and sets limit of items displayed to 6
 for (var i = 0; i < 5; i++) {
@@ -12,6 +15,17 @@ for (var i = 0; i < 5; i++) {
     const city = localStorage.getItem(i);
     var cityName = $(".list-group").addClass("list-group-item");
     cityName.append("<li>" + city + "</li>");
+}
+
+// removes null results stored in localStorage
+if (lastSearch !== null) {
+    for (let i=0; i < lastSearch.length; i++) {
+        if (lastSearch[i] === null) {
+            lastSearch.splice(i, i+1);
+        } else {
+            localCityArray.push(lastSearch[i]);
+        }
+    }
 }
 // calls and displays data onto main card
 let weather = {
@@ -38,19 +52,26 @@ let weather = {
     },
     search: function () {
         this.fetchWeather(document.querySelector(".searchbar").value)
-    }
+    },
+    fetchForecast: function(city) {
+        fetch(
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=metric&appid=${APIkey}`
+        )
+        .then((response) => response.json())
+        .then((data) => this.displayForecast(data)); 
+    }, 
+    displayForecast: function(data) {
+        const { name } = data;
+        const { icon } = data.weather[0];
+        const { temp, humidity } = data.daily.temp;
+        const { speed } = data.wind;
+        console.log(name,icon,description,temp,humidity,speed);
+    
+    }  
+      
 };
 
-function getForecast(data) {
-    const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.lat}&lon=${data.lon}&exclude=minutely,hourly,alerts&units=metric&appid=${APIkey}`
-    fetch(requestUrl)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data){
-            
-        })
-}
+
 
 //listens for button to be clicked while then calls search function which changes the city and adds to localstorage
 document.querySelector(".searchBtn").addEventListener("click",  function () {
